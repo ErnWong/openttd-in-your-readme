@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  server:
+    image: redditopenttd/openttd:latest
+    expose:
+      - "3979/tcp"
+      - "3979/udp"
+    user: openttd
+    volumes:
+      - ./.openttd/openttd.cfg:/config/openttd.cfg:ro
+  client:
+    build: ./client
+    ports:
+      - "5901/tcp"
+    user: openttd
+    volumes:
+      - ./.openttd/openttd.cfg:/home/openttd/.openttd/openttd.cfg:ro
+      - ./client/.vnc/xstartup:/.vnc/xstartup:ro
