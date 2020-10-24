@@ -12,6 +12,7 @@
   "scripts": {
     "build": "tsc",
     "start": "npm run build && node dist/index.js",
+    "dev": "tsc-watch --onSuccess 'node dist/index.js'",
     "pre-test": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .js",
@@ -49,6 +50,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.2",
+    "tsc-watch": "^4.2.9",
     "typescript": "^4.0.3"
   }
 }
