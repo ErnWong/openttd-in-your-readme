@@ -1,0 +1,9 @@
+*
+
+!/src
+!/package.json
+!/yarn.lock
+!/tsconfig.json
+!/.eslintignore
+!/.eslintrc
+!/opengfx/sprites/png/gui/fonts.png

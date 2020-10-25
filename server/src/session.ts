@@ -12,11 +12,11 @@ export default class Session implements Routable {
   router: Router = Router()
   rfbConnection: rfb.RfbClient
 
-  constructor (port: number) {
+  constructor () {
     console.log('Connecting to VNC...')
     this.rfbConnection = rfb.createConnection({
-      host: '127.0.0.1',
-      port: port
+      host: 'openttd-client',
+      port: 5901
     })
 
     this.rfbConnection.on('error', (error: Error) => {

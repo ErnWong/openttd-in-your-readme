@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  server:
+  openttd-server:
     image: redditopenttd/openttd:latest
     expose:
       - "3979/tcp"
@@ -9,11 +9,16 @@ services:
     user: openttd
     volumes:
       - ./.openttd/openttd.cfg:/config/openttd.cfg:ro
-  client:
-    build: ./client
-    ports:
+  openttd-client:
+    build: ./openttd-client
+    expose:
       - "5901/tcp"
     user: openttd
     volumes:
       - ./.openttd/openttd.cfg:/home/openttd/.openttd/openttd.cfg:ro
-      - ./client/.vnc/xstartup:/.vnc/xstartup:ro
+      - ./openttd-client/.vnc/xstartup:/.vnc/xstartup:ro
+  js-server:
+    build: ./server
+    ports:
+      - "3000/tcp"
+    user: node

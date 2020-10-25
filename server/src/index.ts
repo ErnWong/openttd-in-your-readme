@@ -4,7 +4,7 @@ import nocache from 'nocache'
 import html from './html'
 import Session from './session'
 
-const session = new Session(32769)
+const session = new Session()
 
 const app = express()
 app.use(nocache())
