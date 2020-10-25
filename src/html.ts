@@ -1,4 +1,5 @@
 import Screen from './screen'
+import { Keyboard, KeyRect } from './keyboard'
 import Mouse from './mouse'
 import { PointerXAxis, PointerYAxis, PointerAxisImageSet } from './pointer-axis'
 import { Rect } from './gui'
@@ -39,13 +40,27 @@ function initMouse () : string {
   const { full, left, right, bottom } = Mouse.rects
   const scale = 99 / full.width
   parts.push('<a href="/pointer/mouse/left-click" title="Toggle left click">')
-  parts.push(`<img src="/pointer/mouse/left-button.gif" width"${scale * left.width} align="top">`)
+  parts.push(`<img src="/pointer/mouse/left-button.gif" width="${scale * left.width}%" align="top">`)
   parts.push('</a>')
   parts.push('<a href="/pointer/mouse/right-click" title="Toggle right click">')
-  parts.push(`<img src="/pointer/mouse/right-button.gif" width"${scale * right.width} align="top">`)
+  parts.push(`<img src="/pointer/mouse/right-button.gif" width="${scale * right.width}%" align="top">`)
   parts.push('</a>')
   parts.push('<br>')
-  parts.push(`<img src="/pointer/mouse/mouse-grabby-part.gif" width"${scale * bottom.width} align="top">`)
+  parts.push(`<img src="/pointer/mouse/mouse-grabby-part.gif" width="${scale * bottom.width}%" align="top">`)
+  return parts.join('')
+}
+
+function initKeyboard () : string {
+  const parts: string[] = []
+  const scale = 99 / Keyboard.rect.width
+  for (const row of [1, 2, 3, 4, 5].map(i => `row${i}`)) {
+    const rowRect = Keyboard.rects[row] as KeyRect[]
+    for (const [i, keyRect] of rowRect.entries()) {
+      parts.push(`<a href="/keyboard/${row}/${i}/click" title="Toggle keyboard key '${keyRect.key}'">`)
+      parts.push(`<img src="/keyboard/${row}/${i}/image.gif" width="${scale * keyRect.width}%" align="top">`)
+    }
+    parts.push('<br>')
+  }
   return parts.join('')
 }
 
@@ -67,8 +82,10 @@ function initHtml () : string {
   htmlParts.push('<tr><td><table><tbody>')
   htmlParts.push('<tr>')
   htmlParts.push('<td>')
+  htmlParts.push(initKeyboard())
+  htmlParts.push('</td>')
+  htmlParts.push('<td>')
   htmlParts.push(initMouse())
-  htmlParts.push('<br>')
   htmlParts.push('</td>')
   htmlParts.push('</tr>')
   htmlParts.push('</tbody></table></td></tr>')

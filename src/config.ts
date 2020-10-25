@@ -41,3 +41,5 @@ export const COLOURS: { [key: string]: Colour } = {
 export const MOUSE_BUTTON_WIDTH = 30
 export const MOUSE_BUTTON_HEIGHT = 40
 export const MOUSE_HEIGHT = 100
+export const KBD_KEY_HEIGHT = 30
+export const KBD_KEY_WIDTH = 30

@@ -253,7 +253,7 @@ const SPRITE_INFO = [
 /* eslint-enable no-multi-spaces */
 /* eslint-enable array-bracket-spacing */
 
-const FONT_HEIGHT = 13
+export const FONT_HEIGHT = 13
 const font: Map<string, Glyph> = new Map()
 
 function loadFont () {
