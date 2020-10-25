@@ -1,0 +1,39 @@
+name: Testing
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+
+jobs:
+  build:
+    name: Build OpenGFX
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Checkout tags
+      uses: openttd/actions/checkout@v1
+      with:
+        with-tags: true
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        set -e
+
+        sudo apt update
+        sudo apt install -y gimp grfcodec --no-install-recommends
+        python -m pip install --upgrade pip
+        python -m pip install nml
+    - name: Build
+      run: |
+        set -e
+
+        make maintainer-clean
+        make bundle_tar bundle_src

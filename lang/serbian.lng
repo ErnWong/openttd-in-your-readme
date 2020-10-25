@@ -1,0 +1,10 @@
+##grflangid 0x0d
+##plural 6
+##gender ženski srednji muški
+##case nom big aku vok dat lok ins gen
+STR_GENERAL_DESC        :OpenGFX skup osnovnih grafika za OpenTTD. Slobodno dostupan pod uslovima 2. verzije GNU-ove opšte javne licence. [{TITLE}]
+
+STR_GRF_NAME            :{TITLE}
+STR_GRF_DESCRIPTION     :{ORANGE}OpenGFX set osnovnih grafika za OpenTTD{BLACK}{}Predstavljen od OpenGFX tima{}Za listu saradnika pogledati readme{}{BLACK}Dozvola: {SILVER}GPL v2+{}{BLACK}Website: {SILVER}http://dev.openttdcoop.org/projects/opengfx
+
+STR_OPENTTD_VERSION     :1.2.0

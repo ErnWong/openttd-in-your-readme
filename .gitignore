@@ -1,0 +1,20 @@
+# The local makefile should be ignored:
+Makefile.local
+
+# Generated files
+Makefile.vcs
+Makefile.gfx
+custom_tags.txt
+.nmlcache
+
+*.scm
+*.dep
+*.nml
+*.grf
+*.obg
+*.md5
+*.cache
+*.cacheindex
+
+# Ignore directories from bundle creation / install:
+opengfx-*
