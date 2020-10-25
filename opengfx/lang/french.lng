@@ -1,0 +1,9 @@
+##grflangid 0x03
+##plural 2
+##gender f m m2
+STR_GENERAL_DESC        :Graphismes de Base OpenGFX pour OpenTTD. Disponibles librement selon les termes de la Licence Publique Générale GNU version 2. [{TITLE}]
+
+STR_GRF_NAME            :{TITLE}
+STR_GRF_DESCRIPTION     :{ORANGE}OpenGFX{NBSP}: Grapismes de Base{BLACK}{}Concoctés pour vous par la team OpenGFX{}Liste des contributeurs{NBSP}: voir le readme{}{BLACK}Licence: {SILVER}GPL v2+{}{BLACK}Site web{NBSP}: {SILVER}http://dev.openttdcoop.org/projects/opengfx
+
+STR_OPENTTD_VERSION     :1.2.0
