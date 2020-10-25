@@ -23,6 +23,10 @@ import {
   COLOURS
 } from './config'
 
+export interface PointerClickRect extends Rect {
+  pointerPosition: number
+}
+
 export interface PointerAxisImageSet<T> extends ImageSet<T> {
   full: T
   sliced: T[]
@@ -107,17 +111,17 @@ abstract class PointerAxis extends EventEmitter implements Routable {
 
     this.router.get('/:pointerPosition/move', (request: Request, response: Response) => {
       const pointerPosition = parseInt(request.params.pointerPosition)
-      if (pointerPosition < 0 || pointerPosition >= this.gif.sliced.length) {
+      if (pointerPosition < 0 || pointerPosition >= this.getSlices().length) {
         response.status(400).send('Out of range')
       }
-      this.emit('move', pointerPosition * POINTER_AXIS_PRECISION)
+      this.emit('move', this.getSlices()[pointerPosition].pointerPosition)
       response.redirect('back')
     })
   }
 
   abstract getWidth () : number
   abstract getHeight () : number
-  abstract getSlices () : Rect[]
+  abstract getSlices () : PointerClickRect[]
   abstract getRects () : PointerAxisImageSet<Rect>
 
   saveContextToImageSet () : PointerAxisImageSet<ImageData> {
@@ -188,13 +192,14 @@ export class PointerXAxis extends PointerAxis {
   static readonly width = SCREEN_SIZE.width + 2 * UNIT_PADDING
   static readonly height = UNIT_THICKNESS
   static readonly slices = (() => {
-    const slices: Rect[] = []
+    const slices: PointerClickRect[] = []
     for (let x = 0; x < SCREEN_SIZE.width; x += POINTER_AXIS_PRECISION) {
       slices.push({
         x: UNIT_PADDING + x,
         y: UNIT_PADDING,
         width: POINTER_AXIS_PRECISION,
-        height: UNIT_THICKNESS - 2 * UNIT_PADDING
+        height: UNIT_THICKNESS - 2 * UNIT_PADDING,
+        pointerPosition: x
       })
     }
     return slices
@@ -242,14 +247,15 @@ export class PointerYAxis extends PointerAxis {
   static readonly width = IMAGE_MIN_HEIGHT + 2 * UNIT_PADDING
   static readonly height = SCREEN_SIZE.height + 2 * UNIT_PADDING
   static readonly slices = (() => {
-    const slices: Rect[] = []
+    const slices: PointerClickRect[] = []
     for (let y = 0; y < SCREEN_SIZE.height; y += IMAGE_MIN_HEIGHT) {
       for (let i = 0; i < IMAGE_MIN_HEIGHT; i += POINTER_AXIS_PRECISION) {
         slices.push({
           x: UNIT_PADDING + i,
           y: y + UNIT_PADDING,
           width: POINTER_AXIS_PRECISION,
-          height: IMAGE_MIN_HEIGHT
+          height: IMAGE_MIN_HEIGHT,
+          pointerPosition: y + IMAGE_MIN_HEIGHT - i
         })
       }
     }
