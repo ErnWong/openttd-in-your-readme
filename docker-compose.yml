@@ -14,9 +14,6 @@ services:
     expose:
       - "5901/tcp"
     user: openttd
-    volumes:
-      - ./.openttd/openttd.cfg:/home/openttd/.openttd/openttd.cfg:ro
-      - ./openttd-client/.vnc/xstartup:/.vnc/xstartup:ro
   js-server:
     build: ./server
     ports:
