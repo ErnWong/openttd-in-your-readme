@@ -33,7 +33,7 @@
     "gif"
   ],
   "author": "Ernest Wong <sudo@ernestwong.nz>",
-  "license": "MIT",
+  "license": "GPL-2.0-only",
   "bugs": {
     "url": "https://github.com/ErnWong/openttd-in-your-readme/issues"
   },
