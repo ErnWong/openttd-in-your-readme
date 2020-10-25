@@ -17,5 +17,5 @@ services:
   js-server:
     build: ./server
     ports:
-      - "3000/tcp"
+      - "3000:3000/tcp"
     user: node
