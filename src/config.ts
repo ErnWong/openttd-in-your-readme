@@ -30,6 +30,11 @@ export const COLOURS: { [key: string]: Colour } = {
     main: '#000000',
     highlight: '#ffffff',
     shadow: '#000000'
+  },
+  brown: {
+    main: '#98845x',
+    highlight: '#d4bc94',
+    shadow: '#68502c'
   }
 }
 

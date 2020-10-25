@@ -68,6 +68,7 @@ function initHtml () : string {
   htmlParts.push('<tr>')
   htmlParts.push('<td>')
   htmlParts.push(initMouse())
+  htmlParts.push('<br>')
   htmlParts.push('</td>')
   htmlParts.push('</tr>')
   htmlParts.push('</tbody></table></td></tr>')

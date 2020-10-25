@@ -1,5 +1,6 @@
 import { CanvasRenderingContext2D } from 'canvas'
 import { UNIT_THICKNESS } from './config'
+import { drawText } from './fonts'
 
 export interface Colour {
   main: string,
@@ -116,14 +117,17 @@ export function drawRidged (
 export function drawWindow (
   context: CanvasRenderingContext2D,
   rect: Rect,
+  titleText: string,
   frameColour: Colour,
-  titleColour: Colour,
+  titleTextColour: Colour,
+  titleBackgroundColour: Colour,
   backgroundColour: Colour
 ) : Rect {
   const titleRect = { ...rect, height: UNIT_THICKNESS }
   const bodyRect = { ...rect, y: UNIT_THICKNESS, height: rect.height - UNIT_THICKNESS }
-  drawRidged(context, titleRect, frameColour, titleColour)
+  drawRidged(context, titleRect, frameColour, titleBackgroundColour)
   drawRidged(context, bodyRect, frameColour, backgroundColour)
+  drawText(context, rect.width / 2, 2, titleText, titleTextColour, true)
   return rectOffset(bodyRect, -2)
 }
 

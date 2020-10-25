@@ -45,8 +45,15 @@ export default class Screen implements Routable {
   constructor (rfbConnection: rfb.RfbClient) {
     this.canvas = createCanvas(...spreadSize(Screen.rect))
     this.context = this.canvas.getContext('2d')
-    this.contentRect =
-      drawWindow(this.context, Screen.rect, COLOURS.grey, COLOURS.grey, COLOURS.black)
+    this.contentRect = drawWindow(
+      this.context,
+      Screen.rect,
+      'Play multiplayer OpenTTD on my Github Readme!',
+      COLOURS.brown,
+      COLOURS.white,
+      COLOURS.brown,
+      COLOURS.black
+    )
 
     this.rfbConnection = rfbConnection
 
