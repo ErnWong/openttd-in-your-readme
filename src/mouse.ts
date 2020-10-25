@@ -110,7 +110,6 @@ export default class Mouse extends EventEmitter implements Routable {
   private generateGifImageSet () : MouseImageSet<Buffer> {
     const gifSet : ImageSet<Buffer> = {}
     for (const [key, rect] of Object.entries(Mouse.rects)) {
-      console.log({ key, rect })
       assert(!Array.isArray(rect))
       const imageData = this.context.getImageData(...spreadRect(rect))
       const gif = new GifEncoder(...spreadSize(rect))
