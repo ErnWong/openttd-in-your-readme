@@ -89,6 +89,7 @@ export default class Mouse extends EventEmitter implements Routable {
     this.router.get('/left-click', this.onLeftClick)
     this.router.get('/right-click', this.onRightClick)
     this.router.get('/left-button.gif', (_: Request, response: Response) : void => {
+      response.type('image/gif')
       if (this.buttonState & BUTTONS.left) {
         response.send(this.gifsPressed.left)
       } else {
@@ -96,6 +97,7 @@ export default class Mouse extends EventEmitter implements Routable {
       }
     })
     this.router.get('/right-button.gif', (_: Request, response: Response) : void => {
+      response.type('image/gif')
       if (this.buttonState & BUTTONS.right) {
         response.send(this.gifsPressed.right)
       } else {
@@ -103,6 +105,7 @@ export default class Mouse extends EventEmitter implements Routable {
       }
     })
     this.router.get('/mouse-grabby-part.gif', (_: Request, response: Response) : void => {
+      response.type('image/gif')
       response.send(this.gifsReleased.bottom)
     })
   }

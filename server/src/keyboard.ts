@@ -214,6 +214,7 @@ export class Keyboard implements Routable {
         response.status(400).send('Out of range')
         return
       }
+      response.type('image/gif')
       const isPressed = row[index]
       if (!isPressed && !this.isShifted()) {
         response.send(this.gifsReleased[request.params.row][index])
