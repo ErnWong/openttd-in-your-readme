@@ -15,7 +15,7 @@ export default class Session implements Routable {
   constructor () {
     console.log('Connecting to VNC...')
     this.rfbConnection = rfb.createConnection({
-      host: 'openttd-client',
+      host: 'openttd',
       port: 5901
     })
 

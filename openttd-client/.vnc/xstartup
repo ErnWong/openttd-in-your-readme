@@ -1,1 +1,0 @@
-exec /usr/games/openttd -n openttd-server:3979 -x -d 1

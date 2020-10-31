@@ -1,16 +1,8 @@
 version: "3"
 
 services:
-  openttd-server:
-    image: redditopenttd/openttd:latest
-    expose:
-      - "3979/tcp"
-      - "3979/udp"
-    user: openttd
-    volumes:
-      - ./.openttd/openttd.cfg:/config/openttd.cfg:ro
-  openttd-client:
-    build: ./openttd-client
+  openttd:
+    build: ./openttd
     expose:
       - "5901/tcp"
     user: openttd
