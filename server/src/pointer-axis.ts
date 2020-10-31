@@ -224,13 +224,14 @@ export class PointerYAxis extends PointerAxis {
   static readonly width = CURSOR_SIZE + IMAGE_MIN_HEIGHT
   static readonly height = SCREEN_SIZE.height + 2 * UNIT_PADDING
   static readonly clickSlices = (() => {
+    const PRECISION = 4
     const slices: PointerClickRect[] = []
     for (let y = 0; y < SCREEN_SIZE.height; y += IMAGE_MIN_HEIGHT) {
-      for (let i = 0; i < IMAGE_MIN_HEIGHT; i++) {
+      for (let x = 0, i = 0; x < IMAGE_MIN_HEIGHT; x += PRECISION, i++) {
         slices.push({
-          x: CURSOR_SIZE + i,
+          x: CURSOR_SIZE + x,
           y: y + UNIT_PADDING,
-          width: 1,
+          width: PRECISION,
           height: IMAGE_MIN_HEIGHT,
           pointerPosition: y + IMAGE_MIN_HEIGHT - i,
           imageSource: i
