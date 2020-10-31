@@ -131,6 +131,29 @@ export function drawWindow (
   return rectOffset(bodyRect, -2)
 }
 
+export enum Direction {
+  UP = 0,
+  RIGHT = Math.PI / 2,
+  DOWN = Math.PI,
+  LEFT = Math.PI * 3 / 2
+}
+
+export function drawTriangle (
+  context: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  direction: Direction
+) : void {
+  context.save()
+  context.translate(x, y)
+  context.rotate(direction)
+  for (let i = 0; i < size; i++) {
+    context.fillRect(-i, i, 2 * i + 1, 1)
+  }
+  context.restore()
+}
+
 export interface ImageSet<T> {
   [index: string]: T | T[]
 }
