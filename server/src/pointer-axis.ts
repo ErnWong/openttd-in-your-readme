@@ -66,7 +66,6 @@ abstract class PointerAxis extends EventEmitter implements Routable {
       }
       response.type('image/gif')
       response.send(this.gif.clickSlices[index])
-      console.log(this.getSlices())
     })
 
     this.router.get('/:pointerPosition/move', (request: Request, response: Response) => {
