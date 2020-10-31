@@ -58,6 +58,7 @@ export default class Screen implements Routable {
     this.rfbConnection = rfbConnection
 
     this.router.get('/stream.gif', this.onGifConnect)
+    this.router.get('/snapshot.gif', this.onGifSnapshot)
     this.rfbConnection.on('rect', this.onScreenUpdate)
     this.rfbConnection.on('connect', this.onRfbConnect)
   }
@@ -141,6 +142,15 @@ export default class Screen implements Routable {
     const gif = this.gifs.get(gifId)
     assert(gif instanceof GifEncoder, `Request ${gifId} not found`)
     gif.addFrame(this.context.getImageData(0, 0, this.canvas.width, this.canvas.height).data)
+  }
+
+  private onGifSnapshot = (_: Request, response: Response) : void => {
+    const gif = new GifEncoder(...spreadSize(this.canvas))
+    response.type('image/gif')
+    gif.pipe(response)
+    gif.writeHeader()
+    gif.addFrame(this.context.getImageData(0, 0, this.canvas.width, this.canvas.height).data)
+    gif.finish()
   }
 
   getRouter () : Router {

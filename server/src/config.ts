@@ -2,7 +2,7 @@ import { Size, Colour } from './gui'
 
 export const CURSOR_SIZE = 10
 export const CURSOR_BLINK_RATE_FPS = 2
-export const REFRESH_RATE_MS = 50
+export const REFRESH_RATE_MS = 300
 export const SCREEN_SIZE : Size = {
   width: 640,
   height: 480

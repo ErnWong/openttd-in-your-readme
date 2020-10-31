@@ -82,7 +82,7 @@ function initHtml () : string {
   htmlParts.push('<td>')
   htmlParts.push(initPointerYAxisHtml())
   htmlParts.push('</td>')
-  htmlParts.push(`<td><img src="${host}/screen/stream.gif" ${screenAttrib}></td>`)
+  htmlParts.push(`<td><img src="${host}/screen/snapshot.gif" ${screenAttrib}></td>`)
   htmlParts.push('</tr>')
   htmlParts.push('</tbody></table></td></tr>')
   htmlParts.push('<tr><td><table><tbody>')
