@@ -203,6 +203,7 @@ export class PointerXAxis extends PointerAxis {
     this.context.fillRect(...spreadRect(sizeToRect(this.canvas)))
     this.context.fillStyle = COLOURS.grey.main
     this.context.fillRect(UNIT_PADDING, IMAGE_MIN_HEIGHT, this.canvas.width, 1)
+    this.context.fillRect(UNIT_PADDING, IMAGE_MIN_HEIGHT * 2 - 1, this.canvas.width, 1)
     this.context.restore()
     this.background = this.saveContextToImageSet()
   }
