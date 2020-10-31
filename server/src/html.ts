@@ -26,9 +26,10 @@ function initPointerYAxisHtml () : string {
   const attrib = 'align="top" alt="Set cursor location" title="Cursor locator"'
   const parts: string[] = []
   const clickSlices = PointerYAxis.clickSlices
-  parts.push('<table><tbody><tr><td>')
+  parts.push('<td>')
   parts.push(`<img src="${srcPrefix}/cursor.gif" ${attrib}>`)
-  parts.push('</td><td><table><tbody><tr><td>')
+  parts.push('</td><td>')
+  parts.push('<table><tbody><tr><td>')
   for (const [i, rect] of clickSlices.entries()) {
     const prevY = i - 1 >= 0 ? clickSlices[i - 1].y : null
     if (rect.y !== prevY) {
@@ -38,7 +39,8 @@ function initPointerYAxisHtml () : string {
     parts.push(`<img src="${srcPrefix}/${rect.imageSource}.gif" ${attrib}>`)
     parts.push('</a>')
   }
-  parts.push('</td></tr></tbody></table></td></tr></tbody></table>')
+  parts.push('</td></tr></tbody></table>')
+  parts.push('</td>')
   return parts.join('')
 }
 
@@ -75,13 +77,11 @@ function initHtml () : string {
   const screenAttrib = 'align="top" alt="OpenTTD got disconnected. Please refresh the page." title="Click the horizontal and vertical bars on above and on the left of the screen to move the cursor"'
   htmlParts.push('<html><body><table><tbody>')
   htmlParts.push('<tr><td><table><tbody>')
-  htmlParts.push('<tr><td></td><td>')
+  htmlParts.push('<tr><td></td><td></td><td>')
   htmlParts.push(initPointerXAxisHtml())
   htmlParts.push('</td></tr>')
   htmlParts.push('<tr>')
-  htmlParts.push('<td>')
   htmlParts.push(initPointerYAxisHtml())
-  htmlParts.push('</td>')
   htmlParts.push(`<td><img src="${host}/screen/snapshot.gif" ${screenAttrib}></td>`)
   htmlParts.push('</tr>')
   htmlParts.push('</tbody></table></td></tr>')
