@@ -48,7 +48,7 @@ export default class Screen implements Routable {
     this.contentRect = drawWindow(
       this.context,
       Screen.rect,
-      'Play multiplayer OpenTTD on my Github Readme!',
+      'Would you like to play some OpenTTD?',
       COLOURS.brown,
       COLOURS.white,
       COLOURS.brown,

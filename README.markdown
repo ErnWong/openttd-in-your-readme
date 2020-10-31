@@ -8,4 +8,4 @@ When developers realised that they could make their profile page animated, it fe
 
 *How far can we go?*
 
-*How about adding a 3D real-time multiplayer game to your readme, like, I don't know, OpenTTD?*
+*How about adding a 3D real-time game to your readme, like, I don't know, OpenTTD?*
